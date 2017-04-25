@@ -67,7 +67,7 @@ Assosiation
 
 |column|type|options|
 |:-:|:-:|:-:|
-|body|integer||
+|body|integer|index: true, null: false,|
 |image|string||
 |group_id|integer||
 |user_id|integer||

@@ -40,10 +40,12 @@ Association
 * has_many :groups, through: members
 * has_many :messages
 * has_many members
+
 **groups table**
 |column|type|options|
 |:-:|:-:|:-:|
 |name|string|index: true, null: false|
+
 Association
 * has_many :users, through: members
 * has_many :messages
@@ -54,6 +56,7 @@ Association
 |:-:|:-:|:-:|
 |user_id|integer||
 |group_id|integer||
+
 Assosiation
 * belongs_to :users
 * belongs_to :groups
@@ -65,5 +68,6 @@ Assosiation
 |image|string||
 |group_id|integer||
 |user_id|integer||
+
 Assosiation
 * belongs_to users

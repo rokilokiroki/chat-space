@@ -37,9 +37,9 @@ Please feel free to use a different markup language if you do not plan to run
 |mail|string|null: false, unique: true|
 
 Association
-* has_many :groups, through: members
+* has_many :groups, through: user_groups
 * has_many :messages
-* has_many members
+* has_many user_groups
 
 **groups table**
 
@@ -48,11 +48,11 @@ Association
 |name|string|index: true, null: false|
 
 Association
-* has_many :users, through: members
+* has_many :users, through: user_groups
 * has_many :messages
-* has_many members
+* has_many user_groups
 
-**members**
+**user_groups**
 
 |column|type|options|
 |:-:|:-:|:-:|
@@ -60,8 +60,8 @@ Association
 |group_id|integer||
 
 Assosiation
-* belongs_to :users
-* belongs_to :groups
+* belongs_to :user
+* belongs_to :group
 
 **messages**
 
@@ -73,4 +73,4 @@ Assosiation
 |user_id|integer||
 
 Assosiation
-* belongs_to users
+* belongs_to user

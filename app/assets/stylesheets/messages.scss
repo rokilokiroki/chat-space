@@ -1,3 +1,7 @@
+.top-content{
+  background-color: blue;
+  text-align: center;
+}
 .left-content{
   float: left;
   background: #2f3e51;
@@ -96,19 +100,32 @@
   &__message{
     height: 15%;
     background-color: gray;
+      &-button{
+        border:1px
+        solid #CCCCCC;
+        width:100px;
+        height:40px;
+        position: relative;
+        bottom: 10px;
+        left: 150px;
+      }
+      i{
+        color: black;
+        position: absolute;
+        bottom: １0px;
+        right: 250px;
+      }
       &-text{
-        
+        height: 65px;
+        width: 800px;
+        position: relative;
+        top: 30px;
+        left: 100px;
       }
 
   }
 }
 
-.right-content__message-button{
-  border:1px
-  solid #CCCCCC;
-  width:100px;
-  height:40px;
-}
 
 
 

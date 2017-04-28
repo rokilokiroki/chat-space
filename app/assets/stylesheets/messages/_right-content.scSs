@@ -1,0 +1,79 @@
+.right-content{
+  float: right;
+  width: calc(100vw - 300px);
+  height: 100vh;
+  &__name{
+    height: 15%;
+    border: 1px solid #eee;
+    &-element{
+      float: left;
+      width: 500px;
+      &-group p{
+        display: inline-block;
+        font-size: 20px;
+        color: #333333;
+        padding: 35px 0 15px 40px;
+      }
+      &-user p{
+        display: inline-block;
+        font-size: 12px;
+        color: #999999;
+        padding: 0 40px;
+      }
+    }
+    &-edit{
+      float: right;
+      position: relative;
+      top: 25px;
+      right: 100px;
+      &-element{
+      font-size: 15px;
+      padding: 12px 20px;
+      border: $box_border
+     }
+    }
+  }
+  &__chat{
+    height: 70%;
+    &-name p{
+      display: inline-block;
+      padding: 46px 0 0 40px;
+    }
+    &-time{
+      display: inline-block;
+      font-size: 11px;
+      position: relative;
+      bottom: 20px;
+      left: 180px;
+    }
+    &-text p{
+      display: inline-block;
+      padding: 0 0 40px 40px;
+    }
+  }
+  &__message{
+    height: 15%;
+    background-color: gray;
+      &-button{
+        border: $box_border;
+        width:100px;
+        height:40px;
+        position: relative;
+        left: 150px;
+      }
+      i{
+        float: right;
+        position: absolute;
+        bottom: 20px;
+        right: 250px;
+      }
+      textarea{
+        height: 65px;
+        width: 800px;
+        position: relative;
+        top: 30px;
+        left: 100px;
+      }
+
+  }
+}

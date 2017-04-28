@@ -1,11 +1,10 @@
 .right-content{
-  back-ground: #AAAAAA;
   float: right;
   width: calc(100vw - 300px);
   height: 100vh;
   &__name{
     height: 15%;
-    border: 1px solid #aaaaaa;
+    border: 1px solid #eee;
     &-element{
       float: left;
       width: 500px;
@@ -30,7 +29,7 @@
       &-element{
       font-size: 15px;
       padding: 12px 20px;
-      border: 1px solid #CCCCCC;
+      border: $box_border
      }
     }
   }
@@ -56,8 +55,7 @@
     height: 15%;
     background-color: gray;
       &-button{
-        border:1px
-        solid #CCCCCC;
+        border: $box_border;
         width:100px;
         height:40px;
         position: relative;

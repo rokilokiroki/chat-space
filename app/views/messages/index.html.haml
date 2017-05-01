@@ -3,9 +3,10 @@
 .left-content
   .left-content__user
     %p 山田 太郎
-    %a.left-content__user-mark1
-      %i.fa.fa-external-link
-    %a.left-content__user-mark2
+    %span.left-content__user-mark1
+      = link_to edit_user_registration_path do
+        %i.fa.fa-external-link
+    %span.left-content__user-mark2
       %i.fa.fa-cog
   .left-content__group
     .left-content__group-content

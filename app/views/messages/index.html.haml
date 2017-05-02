@@ -1,13 +1,13 @@
 .top-content
-  チャットグループが作成されました。
 .left-content
   .left-content__user
-    %p 山田 太郎
+    %p
+      = @user
     %span.left-content__user-mark1
-      = link_to edit_user_registration_path do
-        %i.fa.fa-external-link
+      %i.fa.fa-external-link
     %span.left-content__user-mark2
-      %i.fa.fa-cog
+      = link_to edit_user_registration_path do
+        %i.fa.fa-cog
   .left-content__group
     .left-content__group-content
       .left-content__group-name

@@ -1,4 +1,16 @@
-.top-content{
-  background-color: blue;
+.flash{
   text-align: center;
+  background-color: #38AEF0;
+  &__error{
+    color: white;
+  }
+  &__alert{
+    color: white;
+  }
+  &__success{
+    color: white;
+  }
+  &__notice{
+    color: white;
+  }
 }

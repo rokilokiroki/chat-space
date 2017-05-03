@@ -1,9 +1,3 @@
 $box_border: 1px solid;
 $blue: #38aef0;
-@mixin clearfix() {
-  &:after {
-    content: '';
-    display: block;
-    clear: both;
-  }
-}
+

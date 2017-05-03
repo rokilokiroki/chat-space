@@ -4,21 +4,19 @@
     %p
       = current_user.name
     %span.left-content__user-mark1
-      %i.fa.fa-external-link
+      = link_to new_group_path do
+        %i.fa.fa-external-link
     %span.left-content__user-mark2
       = link_to edit_user_registration_path do
         %i.fa.fa-cog
   .left-content__group
     .left-content__group-content
       .left-content__group-name
-        %p グループ
+        - current_user.groups.each do |group|
+          %p
+            = group.name
       .left-content__group-text
-        %p やほー
-    .left-content__group-content
-      .left-content__group-name
-        %p グループ
-      .left-content__group-text
-        %p やほー
+        %p ガチャを回せ
 .right-content
   .right-content__name
     .right-content__name-element

@@ -1,4 +1,9 @@
 class GroupsController < ApplicationController
+  before_action :authenticate_user!
+  def index
+    
+  end
+
   def new
     @group = Group.new
   end
@@ -6,11 +11,11 @@ class GroupsController < ApplicationController
   def create
     group = Group.new(post_parms)
     group.save
-    redirect_to controller: :messages, action: :index
+    redirect_to controller: :groups, action: :index
   end
 
   def edit
-
+    group = Group.find(params[:id])
   end
 
   private

@@ -28,8 +28,8 @@ Association
 
 |column|type|options|
 |:-:|:-:|:-:|
-|user_id|integer||
-|group_id|integer||
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
 
 Assosiation
 * belongs_to :user
@@ -39,10 +39,11 @@ Assosiation
 
 |column|type|options|
 |:-:|:-:|:-:|
-|body|integer|index: true, null: false,|
+|body|integer||
 |image|string||
-|group_id|integer||
-|user_id|integer||
+|group_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
 
 Assosiation
 * belongs_to user
+* belongs_to group

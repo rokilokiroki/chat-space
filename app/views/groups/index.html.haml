@@ -1,0 +1,13 @@
+.left-content
+  .left-content__user
+    %p
+      = current_user.name
+    %span.left-content__user-mark1
+      = link_to new_group_path do
+        %i.fa.fa-external-link
+    %span.left-content__user-mark2
+      = link_to edit_user_registration_path do
+        %i.fa.fa-cog
+  .left-content__group
+    .left-content__group-content
+      = render partial: "messages/group"

@@ -1,0 +1,7 @@
+.left-content__group-content
+  .left-content__group-name
+    - current_user.groups.each do |group|
+      %p
+        = group.name
+    .left-content__group-text
+      %p 回せ

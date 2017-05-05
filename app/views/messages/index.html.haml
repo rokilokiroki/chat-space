@@ -11,17 +11,17 @@
         %i.fa.fa-cog
   .left-content__group
     .left-content__group-content
-      = render partial: "group"
+      = render partial: "messages/group"
 .right-content
   .right-content__name
     .right-content__name-element
       .right-content__name-element-group
-        %p samleグループ
+        %p group name
       .right-content__name-element-user
         %p userネーム
     .right-content__name-edit
-      .right-content__name-edit-element
-        edit
+      = link_to edit_group_path(@group) do
+        %p.right-content__name-edit-element edit
   .right-content__chat
     .right-content__chat-name
       %p ユーザーネーム

@@ -1,7 +1,6 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!
   def index
-    
   end
 
   def new
@@ -15,7 +14,13 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    group = Group.find(params[:id])
+    @group = Group.find(params[:id])
+  end
+
+  def update
+    @group = Group.find(params[:id])
+    @group.update(post_parms)
+    redirect_to controller: :groups, action: :index
   end
 
   private

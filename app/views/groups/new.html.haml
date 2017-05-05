@@ -19,7 +19,7 @@
         .chat-group-form__field--right
           #chat-group-users
             #chat-group-user-22.chat-group-user.clearfix
-              %input{:name => "chat_group[user_ids][]", :type => "hidden", :value => "22"}/
+              %input{:name => "chat_group[user_ids][]", :type => "hidden", :value => ""}/
               %p.chat-group-user__name
                 .check_box
                   = f.collection_check_boxes(:user_ids, User.all, :id, :name) do |b|

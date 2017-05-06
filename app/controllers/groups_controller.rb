@@ -1,6 +1,7 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!
-  before_action :edit_update, only: [:update,:edit]
+  before_action :replace_action, only: [:update,:edit]
+
   def index
   end
 
@@ -30,11 +31,6 @@ class GroupsController < ApplicationController
       end
   end
 
-  def edit_update
-    @group = Group.find(params[:id])
-    @users = User.where.not(name: current_user.name)
-  end
-
   private
 
   def post_parms
@@ -42,6 +38,11 @@ class GroupsController < ApplicationController
     user_ids << current_user.id.to_s
     # コレクションボックスのidは文字列だからto_s
     params.require(:group).permit(:name, user_ids: [])
+  end
+
+  def replace_action
+    @group = Group.find(params[:id])
+    @users = User.where.not(name: current_user.name)
   end
 
 end

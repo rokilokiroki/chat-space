@@ -2,6 +2,6 @@
   .left-content__group-name
     - current_user.groups.each do |group|
       %p
-        = group.name
-    .left-content__group-text
-      %p 回せ
+        = link_to group.name, group_messages_path(group), method: :get
+        .left-content__group-text
+          %p 回せ

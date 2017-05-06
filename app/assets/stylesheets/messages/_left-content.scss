@@ -33,12 +33,15 @@
   }
   &__group{
     &-content{
-      padding: 20px 0 20px 20px;
+      padding: 10px 0 10px 10px;
       .left-content__group-name {
         p {
+          a{
           font-size: 15px;
           margin: 0 auto;
           color: white;
+          text-decoration: none;
+          }
         }
       }
         .left-content__group-text {

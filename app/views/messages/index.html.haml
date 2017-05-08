@@ -16,7 +16,8 @@
   .right-content__name
     .right-content__name-element
       .right-content__name-element-group
-        %p group name
+        %p
+          #{@group.name}
       .right-content__name-element-user
         %p userネーム
     .right-content__name-edit
@@ -24,13 +25,14 @@
         %p.right-content__name-edit-element edit
   .right-content__chat
     .right-content__chat-name
-      %p ユーザーネーム
+      %p
+        LGTM下さいマン
     .right-content__chat-time
       %p 2017/4/25
     .right-content__chat-text
       %p ああああああああああああああ
   .right-content__message
-    %textarea(placeholder="type a message")
-    %i(class="fa fa-picture-o")
-    %input(class="right-content__message-button" type="submit" name="send" value="Send")
-
+    = form_for [@group, @message] do |f|
+      = f.text_area :body, placeholder: "グループ名を入力してください"
+      %i(class="fa fa-picture-o")
+      = f.submit "send",class:"right-content__message-button"

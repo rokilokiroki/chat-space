@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :replace_post, only: [:index,:create]
+  before_action :replace_message, only: [:index,:create]
   def index
     #このgroup_idは/groups/:group_id/messages(.:format)のgroup_idである。参照rake routes
     #group_idをとってくることによってそのグループの情報を取ってくることが出来る。そしてその情報からeditに飛べる。editに跳ぶにはここのindexの情報が必須だった。
@@ -7,19 +7,17 @@ class MessagesController < ApplicationController
   end
 
   def create
-    message = Message.new(post_parms)
+    message = current_user.messages.new(post_parms)
     group = Group.find(params[:group_id])
    if message.save
-    redirect_to group_messages_path(message),notice: "メッセージをさくせい"
+      redirect_to group_messages_path(message),notice: "メッセージをさくせい"
     else
-    flash.now[:notice]='メッセージの作成にシッパイ'
-    render :index
+      flash.now[:notice]='メッセージの作成にシッパイ'
+      render :index
     end
   end
 
-  def edit
-
-  end
+  def edit; end
 
   private
 
@@ -27,7 +25,7 @@ class MessagesController < ApplicationController
         # params.require(:message)はモデルから送られてくるキーの名前。モデル名ではない。
     params.require(:message).permit(:body).merge(group_id: params[:group_id],user_id: current_user.id)
   end
-  def replace_post
+  def replace_message
     @group = Group.find(params[:group_id])
     @message = Message.new
   end

@@ -17,7 +17,6 @@ class MessagesController < ApplicationController
     end
   end
 
-  def edit; end
 
   private
 

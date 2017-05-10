@@ -7,10 +7,10 @@ class MessagesController < ApplicationController
   end
 
   def create
-    message = Message.new(post_parms)
+    message = current_user.messages.new (post_parms)
     group = Group.find(params[:group_id])
    if message.save
-    redirect_to group_messages_path(message),notice: "メッセージをさくせい"
+    redirect_to group_messages_path(message), notice: "メッセージをさくせい"
     else
     flash.now[:notice]='メッセージの作成にシッパイ'
     render :index
@@ -27,7 +27,7 @@ class MessagesController < ApplicationController
         # このコードは「params が :user というキーを持ち、params[:user] は :name 及び :email というキーを持つハッシュであること」を検証します。
 
         # 例えば、params[:user] が {:name => 'taro', :email => 'taro@example.com'} のようなハッシュである場合に検証 OK となります。
-    params.require(:message).permit(:body).merge(group_id: params[:group_id],user_id: current_user.id)
+    params.require(:message).permit(:body).merge(group_id: params[:group_id])
   end
 
   def replace_post

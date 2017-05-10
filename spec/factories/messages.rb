@@ -1,7 +1,7 @@
 FactoryGirl.define do
 
   factory :message do
-    body              "abe"
+    body              { Faker::Name.name }
     user_id           "3"
     group_id          "30"
     image ""

@@ -5,22 +5,26 @@ describe MessagesController do
     sign_in user
   end
 
+  after do
+    sign_out user
+  end
+
   let(:user) { create(:user) }
   let(:group) { create(:group, users: [user]) }
-
+  let(:messages){create_list(:message, 3, user: user, group: group)}
   describe "GET #index" do
-    it "renders the :index template" do
+    before do
       get :index, params: { group_id: group.id }
       # 上記はパスを送っていると考える。
-      expect(response).to render_template :index
     end
+      it "renders the :index template" do
+        expect(response).to render_template :index
+      end
 
-    it "assigns an array of messages" do
-      messages = create_list(:message, 3, user: user, group: group)
-      get :index, params: { group_id: group.id }
-      expect(assigns(:messages)).to match(messages)
+      it "assigns an array of messages" do
+        expect(assigns(:messages)).to match(messages)
+      end
     end
-  end
 
   describe "POST #create" do
     context "with valid params" do

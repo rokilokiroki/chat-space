@@ -15,15 +15,15 @@ describe MessagesController do
       before do
         sign_in user
       end
-        it "renders the :index template" do
-          get :index, params: { group_id: group.id }
-          expect(response).to render_template :index
-        end
+      it "renders the :index template" do
+        get :index, params: { group_id: group.id }
+        expect(response).to render_template :index
+      end
 
-        it "assigns an array of messages" do
-          get :index, params: { group_id: group.id }
-          expect(assigns(:messages)).to match(messages)
-        end
+      it "assigns an array of messages" do
+        get :index, params: { group_id: group.id }
+        expect(assigns(:messages)).to match(messages)
+      end
     end
     context "not login var" do
       it "redirect_to(new_user_session_path)" do

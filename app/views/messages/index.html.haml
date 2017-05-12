@@ -19,9 +19,8 @@
         %p
           = @group.name
       .right-content__name-element-user
-        - @group.users.each do |user|
-          %p
-            = current_user.name
+        %p
+          = @group.users.pluck(:name).join(' ')
     .right-content__name-edit
       = link_to edit_group_path(@group) do
         %p.right-content__name-edit-element edit

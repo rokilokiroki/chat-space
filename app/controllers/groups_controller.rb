@@ -7,12 +7,19 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
+    @users = User.where.not(name: current_user.name)
   end
 
   def create
-    group = Group.new(post_params)
-    group.save
-    redirect_to controller: :groups, action: :index
+    @group = Group.new(post_params)
+    if @group.save
+      redirect_to :root, notice: "グループをさくせい"
+    else
+      @users = User.where.not(name: current_user.name)
+      flash.now[:notice] = 'グループの作成にシッパイ'
+      render :new
+    end
+
   end
 
   def edit
@@ -28,6 +35,7 @@ class GroupsController < ApplicationController
       else
         flash.now[:notice]='グループの作成にシッパイ'
         render :edit
+      # renderはbeforeアクションを呼ばない。だからbeforeアクションに記載していたコードを
       end
   end
 
@@ -42,7 +50,6 @@ class GroupsController < ApplicationController
 
   def replace_action
     @group = Group.find(params[:id])
-    @users = User.where.not(name: current_user.name)
   end
 
 end

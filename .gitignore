@@ -12,6 +12,3 @@
 !/log/.keep
 /tmp
 
-spec/controllers/messages_controller_spec.rb
-
-spec/controllers/messages_controller_spec.rb

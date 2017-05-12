@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   before_action :replace_post, only: [:index,:create]
+
   def index
     #このgroup_idは/groups/:group_id/messages(.:format)のgroup_idである。参照rake routes
     #group_idをとってくることによってそのグループの情報を取ってくることが出来る。そしてその情報からeditに飛べる。editに跳ぶにはここのindexの情報が必須だった。
@@ -10,7 +11,9 @@ class MessagesController < ApplicationController
   end
 
   def create
+
     message = current_user.messages.new(post_params)
+
     if message.save
       redirect_to group_messages_path(@group), notice: "メッセージをさくせい"
     else

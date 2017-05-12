@@ -1,11 +1,10 @@
 FactoryGirl.define do
 
-  factory :message, :class => Message do |message|
-    body              { Faker::Name.name }
-    user_id           { Faker::Number.between(1, 10) }
-    group_id          { Faker::Number.between(14, 38) }
-    image ""
-    assosiation :group, factory: :message
+  factory :message do
+    body         { Faker::Name.name }
+
+    # association :group, factory: :group
+    # association :user, factory: :user
   end
 
 end

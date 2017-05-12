@@ -1,23 +1,50 @@
 require 'rails_helper'
 
 describe MessagesController do
-
-  describe 'POST #create' do
-    it "renders the :index template" do
-       post :create(:message)
-       post :create, id:
-       expect(assigns(:message)).to eq message
-    end
+  before do
+    sign_in user
   end
-  describe 'GET #index' do
-    it "assigns the requested tweet to @tweet" do
-      message = create_list(:message, 3)
-      get :index, id: message
-      expect(assigns(:message)).to eq message
-    end
+
+  let(:user) { create(:user) }
+  let(:group) { create(:group, users: [user]) }
+
+  describe "GET #index" do
     it "renders the :index template" do
-      get :index
+      get :index, params: { group_id: group.id }
+      # 上記はパスを送っていると考える。
       expect(response).to render_template :index
     end
+
+    it "assigns an array of messages" do
+      messages = create_list(:message, 3, user: user, group: group)
+      get :index, params: { group_id: group.id }
+      expect(assigns(:messages)).to match(messages)
+    end
+  end
+
+  describe "POST #create" do
+    context "with valid params" do
+      it "redirects to the group_messages_path" do
+        post :create, params: { group_id: group.id, message: { body: "body desu" } }
+        expect(response).to redirect_to(group_messages_path(group))
+      end
+
+      it"creates a new Message" do
+        expect {
+          post :create, params: { group_id: group.id, message: { body: "body desu" } }
+        }.to change(Message, :count).by(1)
+      end
+    end
+    context "with invalid params" do
+      it "returns a success response" do
+        post :create, params: {group_id: group.id, message: { body: "" }}
+        expect(response).to be_success
+      end
+      it "renders the :index template" do
+      get :index, params: { group_id: group.id, message: {body: ""} }
+      expect(response).to render_template :index
+      end
+    end
+
   end
 end

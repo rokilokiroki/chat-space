@@ -39,6 +39,7 @@
   }
   &__chat{
     height: 70%;
+    overflow: auto;
     &-name p{
       display: inline-block;
       padding: 46px 0 0 40px;

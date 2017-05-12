@@ -58,6 +58,6 @@ describe MessagesController do
         get :index, params: { group_id: group.id, message: {body: ""} }
         expect(response).to render_template :index
         end
-    end
+      end
   end
 end

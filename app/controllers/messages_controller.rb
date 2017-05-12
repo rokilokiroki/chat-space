@@ -5,6 +5,8 @@ class MessagesController < ApplicationController
     #group_idをとってくることによってそのグループの情報を取ってくることが出来る。そしてその情報からeditに飛べる。editに跳ぶにはここのindexの情報が必須だった。
     #ここはmessageコントローラーだが、普通に他のテーブルのモデル、例えば上でいうgroupモデルも取ってくる事が出来る。
     @messages = @group.messages.includes(:user).order("created_at DESC")
+    @message = Message.new
+
   end
 
   def create
@@ -32,8 +34,6 @@ class MessagesController < ApplicationController
   end
 
   def replace_post
-    @groups = current_user.groups
-    @group = @groups.find(params[:group_id])
-    @message = Message.new
+    @group = Group.find(params[:group_id])
   end
 end

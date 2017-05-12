@@ -11,7 +11,7 @@
         %i.fa.fa-cog
   .left-content__group
     .left-content__group-content
-      = render partial: "messages/group", collection: @groups
+      = render current_user.groups
 .right-content
   .right-content__name
     .right-content__name-element
@@ -21,7 +21,7 @@
       .right-content__name-element-user
         - @group.users.each do |user|
           %p
-            = user.name
+            = current_user.name
     .right-content__name-edit
       = link_to edit_group_path(@group) do
         %p.right-content__name-edit-element edit

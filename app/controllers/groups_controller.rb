@@ -1,5 +1,4 @@
 class GroupsController < ApplicationController
-  before_action :authenticate_user!
   before_action :replace_action, only: [:update,:edit]
   #renderメソッドは移動先のアクションの変数を持ってこなくてはならない。上記のreplace_actionはその変数をまとめたもの。
   def index

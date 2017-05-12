@@ -4,3 +4,5 @@ class Group < ApplicationRecord
   has_many :messages
   validates :name, presence: true
 end
+
+# has_manyは配列を期待している。から配列。

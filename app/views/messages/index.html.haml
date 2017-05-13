@@ -25,7 +25,7 @@
       = link_to edit_group_path(@group) do
         %p.right-content__name-edit-element edit
   .right-content__chat
-    = render partial: "message", collection: @messages
+    = render @messages
   .right-content__message
     = form_for [@group, @message] do |f|
       = f.text_area :body, placeholder: "グループ名を入力してください"

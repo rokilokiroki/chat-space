@@ -11,20 +11,24 @@ describe MessagesController do
   let(:messages){create_list(:message, 3, user: user, group: group)}
 
   describe "GET #index" do
+
     context "login.ver" do
       before do
         sign_in user
       end
+      let(:params) { { group_id: group.id } }
+
       it "renders the :index template" do
-        get :index, params: { group_id: group.id }
+        get :index, params
         expect(response).to render_template :index
       end
 
       it "assigns an array of messages" do
-        get :index, params: { group_id: group.id }
+        get :index, params
         expect(assigns(:messages)).to match(messages)
       end
     end
+
     context "not login var" do
       it "redirect_to(new_user_session_path)" do
         get :index, params: { group_id: group.id }
@@ -34,30 +38,38 @@ describe MessagesController do
   end
 
   describe "POST #create" do
+
     before do
       sign_in user
     end
+
       context "with valid params" do
+        let(:params) { {group_id: group.id, message: { body: "body desu" }} }
+
         it "redirects to the group_messages_path" do
-          post :create, params: { group_id: group.id, message: { body: "body desu" } }
+          post :create, params
           expect(response).to redirect_to(group_messages_path(group))
         end
 
         it"creates a new Message" do
           expect {
-            post :create, params: { group_id: group.id, message: { body: "body desu" } }
+            post :create, params
           }.to change(Message, :count).by(1)
         end
       end
+
       context "with invalid params" do
+        let(:params) { {group_id: group.id, message: { body: "" }} }
+
         it "returns a success response" do
-          post :create, params: {group_id: group.id, message: { body: "" }}
+          post :create, params
           expect(response).to be_success
         end
         it "renders the :index template" do
-        get :index, params: { group_id: group.id, message: {body: ""} }
+        get :index, params
         expect(response).to render_template :index
         end
       end
+
   end
 end

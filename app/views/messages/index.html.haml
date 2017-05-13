@@ -11,26 +11,21 @@
         %i.fa.fa-cog
   .left-content__group
     .left-content__group-content
-      = render partial: "group"
+      = render current_user.groups
 .right-content
   .right-content__name
     .right-content__name-element
       .right-content__name-element-group
         %p
-          #{@group.name}
+          = @group.name
       .right-content__name-element-user
-        %p userネーム
+        %p
+          = @group.users.pluck(:name).join(' ')
     .right-content__name-edit
       = link_to edit_group_path(@group) do
         %p.right-content__name-edit-element edit
   .right-content__chat
-    .right-content__chat-name
-      %p
-        LGTM下さいマン
-    .right-content__chat-time
-      %p 2017/4/25
-    .right-content__chat-text
-      %p ああああああああああああああ
+    = render @messages
   .right-content__message
     = form_for [@group, @message] do |f|
       = f.text_area :body, placeholder: "グループ名を入力してください"

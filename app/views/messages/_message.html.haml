@@ -1,0 +1,9 @@
+.right-content__chat-name
+  %p
+    = message.user.name
+.right-content__chat-time
+  %p
+    = message.created_at.to_s(:db)
+.right-content__chat-text
+  %p
+    = message.body

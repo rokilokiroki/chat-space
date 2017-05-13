@@ -35,12 +35,13 @@ gem 'font-awesome-sass'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :test do
-  gem 'faker'
+  gem 'rails-controller-testing'
 end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'faker'
   gem 'spring'
   gem 'pry-rails'
   gem 'rspec-rails'

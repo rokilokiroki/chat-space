@@ -11,11 +11,14 @@ class MessagesController < ApplicationController
   end
 
   def create
+    @messages = @group.messages.includes(:user).order("created_at DESC")
+    @message = current_user.messages.new(post_params)
 
-    message = current_user.messages.new(post_params)
-
-    if message.save
-      redirect_to group_messages_path(@group), notice: "メッセージをさくせい"
+    if @message.save
+      respond_to do|format|
+        format.html { redirect_to group_messages_path(@group), notice: "メッセージをさくせい" }
+        format.json { render json: @message}
+      end
     else
       flash.now[:notice] = 'メッセージの作成にシッパイ'
       render :index

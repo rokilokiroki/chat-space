@@ -5,19 +5,19 @@ class MessagesController < ApplicationController
     #このgroup_idは/groups/:group_id/messages(.:format)のgroup_idである。参照rake routes
     #group_idをとってくることによってそのグループの情報を取ってくることが出来る。そしてその情報からeditに飛べる。editに跳ぶにはここのindexの情報が必須だった。
     #ここはmessageコントローラーだが、普通に他のテーブルのモデル、例えば上でいうgroupモデルも取ってくる事が出来る。
-    @messages = @group.messages.includes(:user).order("created_at DESC")
+    @messages = @group.messages.includes(:user)
     @message = Message.new
 
   end
 
   def create
-    @messages = @group.messages.includes(:user).order("created_at DESC")
+    @messages = @group.messages.includes(:user)
     @message = current_user.messages.new(post_params)
-
     if @message.save
       respond_to do|format|
         format.html { redirect_to group_messages_path(@group), notice: "メッセージをさくせい" }
-        format.json { render json: @message}
+        format.json
+        #  { render json: @message}がいらない理由はjbuilderで@messageを経由しているからいらない？
       end
     else
       flash.now[:notice] = 'メッセージの作成にシッパイ'

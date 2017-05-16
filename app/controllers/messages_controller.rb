@@ -17,7 +17,7 @@ class MessagesController < ApplicationController
       respond_to do|format|
         format.html { redirect_to group_messages_path(@group), notice: "メッセージをさくせい" }
         format.json
-        #  { render json: @message}がいらない理由はjbuilderで@messageを経由しているからいらない？
+        #  { render json: @message}がいらない理由はjbuilderで@messageを経由しているからいらない
       end
     else
       flash.now[:notice] = 'メッセージの作成にシッパイ'

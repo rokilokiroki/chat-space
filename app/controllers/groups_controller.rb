@@ -13,7 +13,11 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(post_params)
     if @group.save
-      redirect_to :root, notice: "グループをさくせい"
+      respond_to do|format|
+        format.html { redirect_to :root, notice: "グループをさくせい" }
+        format.json
+        #  { render json: @message}がいらない理由はjbuilderで@messageを経由しているからいらない
+      end
     else
       @users = User.where.not(name: current_user.name)
       flash.now[:notice] = 'グループの作成にシッパイ'

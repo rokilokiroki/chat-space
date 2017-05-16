@@ -2,21 +2,23 @@ $(function() {
   function buildHTML(message) {
     var html =
     // コントローラーから出力されたdataはjbuilderを通ってキーバリューの関係になっている。dataがmessageに変わったので、バリューを取ってやるにはmessage.nameみたいにしないとならない。
-    `<div class = "right-content__chat-name">
-      <p>
-      ${message.name}
-      </p>
-     </div>
-     <div class ="right-content__chat-time">
-      <p>
-      ${message.time}
-      </p>
-     </div>
-     <div class = "right-content__chat-text">
-      <p>
-      ${message.body}
-      </p>
-     </div>`
+    `<div id = "right-content__message">
+      <div class = "right-content__chat-name">
+        <p>
+        ${message.name}
+        </p>
+       </div>
+       <div class ="right-content__chat-time">
+        <p>
+        ${message.time}
+        </p>
+       </div>
+       <div class = "right-content__chat-text">
+        <p>
+        ${message.body}
+        </p>
+      </div>`
+
 
     return html;
   }

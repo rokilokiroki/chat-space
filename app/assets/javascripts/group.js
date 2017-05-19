@@ -2,7 +2,7 @@ $(function() {
   function appendHTML(user) {
     var html =
     `<li class = "chat-group-user__list">
-      <p id='chat-group-user__name' >${user.name}</p>
+      <p id='chat-group-user__name' style="display: inline-block;">${user.name}</p>
       <input type="hidden" name="group[user_ids][]" value=${user.id}>
       <div class="chat-group-user__btn">追加</div>
     </li>`
@@ -11,7 +11,7 @@ $(function() {
   function deleteHTML(userName, userID) {
     var html =
     `<li class = "chat-group-user__list">
-      <p id='chat-group-user__delete-name' >${userName}</p>
+      <p id='chat-group-user__delete-name' style="display: inline-block;">${userName}</p>
       <input type="hidden" class="aaa" name="group[user_ids][]" value=${userID} >
       <div class="chat-group-delete__btn">削除</div>
     </li>`
@@ -23,7 +23,6 @@ $(function() {
     var form = $('#user-search-field').val();
 
 
-
     $.ajax({
         type: 'GET',
         url : '/groups/search',
@@ -33,6 +32,7 @@ $(function() {
         dataType: 'json'
     })
     .done(function(data){
+      console.log("1");
       var html = ('');
       $.each(data.users, function(i, user){
         html += appendHTML(user);

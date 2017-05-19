@@ -23,7 +23,7 @@ class GroupsController < ApplicationController
 
   def edit
     @users = User.where.not(name: current_user.name)
-    #@をつける、インスタンス変数にすることは可視化のため？
+    # 補足ですが、コントローラーのインスタンス変数に@を付けるのは、単純に@が付いている変数がviewに渡されるというrailsの仕組みであるためです。
   end
 
   def update

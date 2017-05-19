@@ -41,7 +41,6 @@ class GroupsController < ApplicationController
   end
 
   def search
-    # @users = User.where('name LIKE(?)', "%#{params[:name]}%")
     @users = User.search_like_name(params[:name])
     # userモデルにscopeを使ってwhere文を渡している。順番としてはjs→コントローラー→model→コントローラー→js
     respond_to do|format|

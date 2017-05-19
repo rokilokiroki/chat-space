@@ -2,7 +2,7 @@ $(function() {
   function appendHTML(user) {
     var html =
     `<li class = "chat-group-user__list">
-      <p id='chat-group-user__name' style="display: inline-block;">${user.name}</p>
+      <p id='chat-group-user__name' >${user.name}</p>
       <input type="hidden" name="group[user_ids][]" value=${user.id}>
       <div class="chat-group-user__btn">追加</div>
     </li>`
@@ -11,7 +11,7 @@ $(function() {
   function deleteHTML(userName, userID) {
     var html =
     `<li class = "chat-group-user__list">
-      <p id='chat-group-user__delete-name' style="display: inline-block;">${userName}</p>
+      <p id='chat-group-user__delete-name' >${userName}</p>
       <input type="hidden" class="aaa" name="group[user_ids][]" value=${userID} >
       <div class="chat-group-delete__btn">削除</div>
     </li>`
@@ -21,27 +21,12 @@ $(function() {
   $('#user-search-field').on('keyup', function() {
     // preventdefaultをしないと送信されてしまう。ここでは送信とかそういうことはしていないからpreventdefaultはいらない。
     var form = $('#user-search-field').val();
-    // var formData = new FormData();
-    // formData.append('name', $('#user-search-field').val());
-    // console.log("vvv formData.get('name') vvv");
-    // console.log(formData.get('name'));
-
-    // console.log("vvv formData.values() vvv");
-    // console.log(formData.values());
-
-    // for(value of formData.entries()){
-    //   console.log("vvv formData value vvv");
-    //   console.log(value);
-    // }
 
 
 
     $.ajax({
         type: 'GET',
         url : '/groups/search',
-        // data: formData,
-        // processData: false,
-        // contentType: false,
         data: { name: form },
         // data: { name: $(this).val() }でもいい。$(this)は$('#user-search-field')の事。
         // data: { name: form }は@users = User.where('name LIKE(?)', "%#{params[:name]}%")がparamsでとってきてるのでdata: { name: form }はハッシュの形{key: value}にしないと駄目だった

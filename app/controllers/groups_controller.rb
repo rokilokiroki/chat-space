@@ -7,13 +7,13 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
-    @users = User.where.not(name: current_user.name)
+    # @users = User.where.not(name: current_user.name)
   end
 
   def create
     @group = Group.new(post_params)
     if @group.save
-      redirect_to :root, notice: "グループをさくせい"
+       redirect_to :root, notice: "グループをさくせい"
     else
       @users = User.where.not(name: current_user.name)
       flash.now[:notice] = 'グループの作成にシッパイ'
@@ -23,7 +23,8 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    #@をつける、インスタンス変数にすることは可視化に便利？
+    @users = User.where.not(name: current_user.name)
+    #@をつける、インスタンス変数にすることは可視化のため？
   end
 
   def update
@@ -39,17 +40,20 @@ class GroupsController < ApplicationController
       end
   end
 
+  def search
+    @users = User.where('name LIKE(?)', "%#{params[:name]}%")
+    respond_to do|format|
+      format.json
+    end
+  end
+
   private
 
   def post_params
-    user_ids = params[:group]["user_ids"]
-    user_ids << current_user.id.to_s
-    # コレクションボックスのidは文字列だからto_s
-    params.require(:group).permit(:name, user_ids: [])
+    params.require(:group).permit(:name, user_ids:[])
   end
 
   def replace_action
     @group = Group.find(params[:id])
   end
-
 end

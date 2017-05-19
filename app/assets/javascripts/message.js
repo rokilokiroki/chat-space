@@ -40,13 +40,13 @@ $(function() {
       contentType: false
     })
     .done(function(data){
-      console.log(data);
       var html = buildHTML(data);
 
       // console.log(html);
       //  function buildHTML(message)がこれの仮引数
       $('.right-content__chat').append(html);
       form.val('');
+      // form.val('')はformの値を空白にしている。
       $('.right-content__chat.right-content__chat').delay(30).animate({
         scrollTop: 20000}, 300, 'swing');
       // heightを%で決めているので動くのは.right-content__chatの間だけになった。だから親要素の70％の間しか動かなかった。

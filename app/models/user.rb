@@ -7,4 +7,6 @@ class User < ApplicationRecord
   #先に中間テーブルを定義して置かないと下のthroughが何を指しているのかわからなくなる。
   has_many :groups, through: :user_groups
   has_many :messages
+
+  scope :search_like_name, ->(name){ where('name LIKE(?)', "%#{name}%") }
 end

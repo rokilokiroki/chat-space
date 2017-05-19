@@ -7,13 +7,12 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
-    @users = User.where.not(name: current_user.name)
   end
 
   def create
     @group = Group.new(post_params)
     if @group.save
-      redirect_to :root, notice: "グループをさくせい"
+       redirect_to :root, notice: "グループをさくせい"
     else
       @users = User.where.not(name: current_user.name)
       flash.now[:notice] = 'グループの作成にシッパイ'
@@ -23,7 +22,8 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    #@をつける、インスタンス変数にすることは可視化に便利？
+    @users = User.where.not(name: current_user.name)
+    # 補足ですが、コントローラーのインスタンス変数に@を付けるのは、単純に@が付いている変数がviewに渡されるというrailsの仕組みであるためです。
   end
 
   def update
@@ -39,17 +39,22 @@ class GroupsController < ApplicationController
       end
   end
 
+  def search
+    @users = User.search_like_name(params[:name])
+    # userモデルにscopeを使ってwhere文を渡している。順番としてはjs→コントローラー→model→コントローラー→js
+    respond_to do|format|
+      format.json
+    end
+  end
+
   private
 
   def post_params
-    user_ids = params[:group]["user_ids"]
-    user_ids << current_user.id.to_s
-    # コレクションボックスのidは文字列だからto_s
-    params.require(:group).permit(:name, user_ids: [])
+    params.require(:group).permit(:name, user_ids:[])
+    # paramsの中身が"group"=>{"name"=>"ブルジョアソシエーション", "user_ids"=>["1", "2", "3", "4", "5", "2", "1"]}, "keyword"=>"", "commit"=>"Save"}なのでuser_idsは中身が配列になっているのでuser_ids[]
   end
 
   def replace_action
     @group = Group.find(params[:id])
   end
-
 end

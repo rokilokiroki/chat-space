@@ -72,7 +72,43 @@
     }
   }
 
-  #chat-group-user {
+  #user-search-result {
+    padding: 0 15px;
+    line-height: 50px;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
+
+    .chat-group-user__list{
+      padding: 0 15px;
+      line-height: 50px;
+      font-size: 14px;
+      border-bottom: 1px solid #ddd;
+      }
+    .chat-group-user__btn {
+      float: right;
+      display: inline-block;
+      cursor: pointer;
+
+      &.chat-group-user__btn--add {
+        color: #38aef0;
+      }
+
+      &.chat-group-user__btn--remove {
+        color: #f05050;
+      }
+    }
+  .chat-group-delete__btn {
+    float: right;
+    display: inline-block;
+    cursor: pointer;
+
+    &.chat-group-user__btn--remove {
+      color: #f05050;
+    }
+  }
+}
+
+  .js-users {
     padding: 0 15px;
     line-height: 50px;
     font-size: 14px;

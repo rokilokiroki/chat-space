@@ -41,7 +41,9 @@ class GroupsController < ApplicationController
   end
 
   def search
-    @users = User.where('name LIKE(?)', "%#{params[:name]}%")
+    # @users = User.where('name LIKE(?)', "%#{params[:name]}%")
+    @users = User.search_like_name(params[:name])
+    # userモデルにscopeを使ってwhere文を渡している。順番としてはjs→コントローラー→model→コントローラー→js
     respond_to do|format|
       format.json
     end
@@ -51,6 +53,7 @@ class GroupsController < ApplicationController
 
   def post_params
     params.require(:group).permit(:name, user_ids:[])
+    # paramsの中身が"group"=>{"name"=>"ブルジョアソシエーション", "user_ids"=>["1", "2", "3", "4", "5", "2", "1"]}, "keyword"=>"", "commit"=>"Save"}なのでuser_idsは中身が配列になっているのでuser_ids[]
   end
 
   def replace_action

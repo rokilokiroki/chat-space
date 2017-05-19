@@ -41,8 +41,6 @@ $(function() {
     })
     .done(function(data){
       var html = buildHTML(data);
-
-      // console.log(html);
       //  function buildHTML(message)がこれの仮引数
       $('.right-content__chat').append(html);
       form.val('');

@@ -62,9 +62,9 @@ html, body {
     }
   }
   &__message{
-    height: 15%;
-    background-color: gray;
-      &-button{
+      height: 15%;
+      background-color: gray;
+        &-button{
         border: $box_border;
         background-color: #38AEF0;
         border: none;
@@ -73,7 +73,7 @@ html, body {
         height:50px;
         position: relative;
         left: 150px;
-      }
+        }
       i{
         float: right;
         position: relative;
@@ -88,8 +88,8 @@ html, body {
         left: 100px;
       }
       label{
-      .image{
-      display: none;
+        .image{
+        display: none;
       }
     }
   }

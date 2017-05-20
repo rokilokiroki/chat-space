@@ -10,9 +10,7 @@ class GroupsController < ApplicationController
   end
 
   def create
-    binding.pry
     @group = Group.new(post_params)
-    binding.pry
     if @group.save
        redirect_to :root, notice: "グループをさくせい"
     else

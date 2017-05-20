@@ -36,7 +36,7 @@ class MessagesController < ApplicationController
 
     # 例えば、params[:user] が {:name => 'taro', :email => 'taro@example.com'} のようなハッシュである場合に検証 OK となります。
 
-    params.require(:message).permit(:body).merge(group_id: params[:group_id])
+    params.require(:message).permit(:body, :image).merge(group_id: params[:group_id])
   end
 
   def replace_post

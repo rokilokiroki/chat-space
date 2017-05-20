@@ -18,6 +18,8 @@
           %label.chat-group-form__label{:for => "chat_group_チャットメンバー"} チャットメンバー
         .chat-group-form__field--right
           %ul.chat-group-user.js-users
+            = current_user.name
+          %input{:type => "hidden", :name => "group[user_ids][]", :value => current_user.id}
       .chat-group-form__field.clearfix
         .chat-group-form__field--left
         .chat-group-form__field--right

@@ -3,9 +3,9 @@ $(function() {
     var html =
     `<li class = "chat-group-user__list">
       <p id='chat-group-user__name' style="display: inline-block;">${user.name}</p>
-      <input type="hidden" name="group[user_ids][]" value=${user.id}>
-      <div class="chat-group-user__btn">追加</div>
+      <div class="chat-group-user__btn" data-user-id = '${user.id}'>追加</div>
     </li>`
+    // datae-user-idにしてあげることで二回idを送らずに済む。
     return html;
   }
   function deleteHTML(userName, userID) {
@@ -15,6 +15,7 @@ $(function() {
       <input type="hidden" class="aaa" name="group[user_ids][]" value=${userID} >
       <div class="chat-group-delete__btn">削除</div>
     </li>`
+    // type="hidden"でuser_idを送っている。
     return html;
   };
 
@@ -44,7 +45,8 @@ $(function() {
   });
   $('#user-search-result').on('click', '.chat-group-user__btn',function(){
     var text = $(this).siblings("p").text();
-    var userID = $(this).siblings("input").val();
+    var userID = $(this).attr('data-user-id')
+    // var userID = $(this).siblings("input").val();
     // 引数は二個渡せた。rubyを思い出せ。メソッド名(変数)だ。
     var user = deleteHTML(text, userID);
     $('.js-users').append(user);

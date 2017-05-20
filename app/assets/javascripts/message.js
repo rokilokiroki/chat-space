@@ -19,8 +19,19 @@ $(function() {
         </p>
       </div>`
 
+    var image = html +
+        `
+      <div class = "right-content__chat-image">
+        <p>
+         <img src="${message.image.thumb.url}">
+        </p>
+      </div>`
 
-    return html;
+    if(message.image.url == null ){
+      return html;
+    } else {
+      return image;
+    }
   }
 
 

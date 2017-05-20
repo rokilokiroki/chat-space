@@ -7,3 +7,6 @@
 .right-content__chat-text
   %p
     = message.body
+.right-content__chat-image
+  %p
+    = image_tag message.image.thumb.url if message.image.url

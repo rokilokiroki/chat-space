@@ -29,5 +29,7 @@
   .right-content__message
     = form_for [@group, @message] do |f|
       = f.text_area :body, placeholder: "グループ名を入力してください"
-      %i(class="fa fa-picture-o")
-      = f.submit "send",class:"right-content__message-button"
+      = f.label :image, class: 'chat-file' do
+        = f.file_field :image, class: "image"
+        %i.fa.fa-image
+      = f.submit "send", class:"right-content__message-button"

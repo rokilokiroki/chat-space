@@ -15,6 +15,11 @@ CarrierWave.configure do |config|
     when 'development'
         config.fog_directory  = 'bossunn10324533'
         config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/bossunn10324533'
+
+    when 'test'
+        config.fog_directory  = 'bossunn10324533'
+        config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/bossunn10324533'
+
     when 'production'
         config.fog_directory  = 'bossunn10324533'
         config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/bossunn10324533'

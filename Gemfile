@@ -58,3 +58,4 @@ end
 gem 'fog'
 gem 'carrierwave'
 gem 'rmagick'
+gem 'dotenv'

@@ -2,7 +2,7 @@ $(function() {
   function buildHTML(message) {
     var html =
     // コントローラーから出力されたdataはjbuilderを通ってキーバリューの関係になっている。dataがmessageに変わったので、バリューを取ってやるにはmessage.nameみたいにしないとならない。
-    `<div id = "right-content__message">
+    `<div class = "chat"  data-message-id="${message.id}">
       <div class = "right-content__chat-name">
         <p>
         ${message.name}
@@ -32,6 +32,26 @@ $(function() {
     } else {
       return image;
     }
+  }
+
+  function updateHTML(){
+    var ID = $('.chat').last(0).data('messageId');
+    $.ajax({
+      type: 'GET',
+      url: location.href,
+      dataType: 'json',
+      data: {
+        ID: ID
+      }
+    })
+    .done(function(data){
+      var chat = ('');
+      data.messages.forEach(function(message) {
+        console.log(message);
+        chat += buildHTML(message);
+      });
+      $('.right-content__chat').append(chat);
+    })
   }
 
 
@@ -65,4 +85,8 @@ $(function() {
     });
   return false;
   });
+  function reload() {
+    setInterval(updateHTML,1000);
+  }
+  reload();
 });

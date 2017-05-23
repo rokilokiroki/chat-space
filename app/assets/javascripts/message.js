@@ -35,19 +35,19 @@ $(function() {
   }
 
   function updateHTML(){
-    var ID = $('.chat').last(0).data('messageId');
+
+    var last_ID = $('.chat').last(0).data('messageId');
     $.ajax({
       type: 'GET',
       url: location.href,
       dataType: 'json',
       data: {
-        ID: ID
+        ID: last_ID
       }
     })
     .done(function(data){
       var chat = ('');
       data.messages.forEach(function(message) {
-        console.log(message);
         chat += buildHTML(message);
       });
       $('.right-content__chat').append(chat);
@@ -85,8 +85,9 @@ $(function() {
     });
   return false;
   });
-  function reload() {
+  if(window.location.href.match(/\/groups\/\d+\/messages/))
+    {
     setInterval(updateHTML,1000);
   }
-  reload();
+
 });

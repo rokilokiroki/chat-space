@@ -1,12 +1,13 @@
-.right-content__chat-name
-  %p
-    = message.user.name
-.right-content__chat-time
-  %p
-    = message.created_at.strftime("%Y年%m月%d日 %H時%M分")
-.right-content__chat-text
-  %p
-    = message.body
-.right-content__chat-image
-  %p
-    = image_tag message.image.thumb.url if message.image.url
+.chat{ "data-message-id": "#{message.id}"}
+  .right-content__chat-name
+    %p
+      = message.user.name
+  .right-content__chat-time
+    %p
+      = message.created_at.strftime("%Y年%m月%d日 %H時%M分")
+  .right-content__chat-text
+    %p
+      = message.body
+  .right-content__chat-image
+    %p
+      = image_tag message.image.thumb.url if message.image.url

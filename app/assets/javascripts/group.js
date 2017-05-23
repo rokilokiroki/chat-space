@@ -33,7 +33,7 @@ $(function() {
         dataType: 'json'
     })
     .done(function(data){
-      console.log("1");
+      var id = $('')
       var html = ('');
       $.each(data.users, function(i, user){
         html += appendHTML(user);

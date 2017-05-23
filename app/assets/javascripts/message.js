@@ -36,13 +36,13 @@ $(function() {
 
   function updateHTML(){
 
-    var last_ID = $('.chat').last(0).data('messageId');
+    var lastId = $('.chat').last(0).data('messageId');
     $.ajax({
       type: 'GET',
       url: location.href,
       dataType: 'json',
       data: {
-        ID: last_ID
+        ID: lastId
       }
     })
     .done(function(data){

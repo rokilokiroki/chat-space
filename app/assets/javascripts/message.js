@@ -86,6 +86,7 @@ $(function() {
   return false;
   });
   if(window.location.href.match(/\/groups\/\d+\/messages/))
+    // このwindowは現在のブラウザを指している。window.location.hrefで現在のurlを現している。例えばwindow.alert("sss")と押してアラート画面が出てくるのはwindowで現在のブラウザを示しておかないと,alertがどこに出てこないといけないかわからないため。
     {
     setInterval(updateHTML,1000);
   }

@@ -34,6 +34,10 @@ gem 'font-awesome-sass'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+group :production do
+  gem 'unicorn'
+end
+
 group :test do
   gem 'rails-controller-testing'
 end

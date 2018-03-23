@@ -61,5 +61,5 @@ group :development do
 end
 gem 'fog'
 gem 'carrierwave'
-gem 'rmagick'
+gem 'mini_magick'
 gem 'dotenv'

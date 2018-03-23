@@ -9,5 +9,5 @@ class User < ApplicationRecord
   has_many :messages
 
   scope :search_like_name, ->(name){ where('name LIKE(?)', "%#{name}%") }
-  # このnameはparams[name]のname
+  # このnameはparams[:name]のname
 end

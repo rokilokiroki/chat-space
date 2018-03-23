@@ -16,7 +16,12 @@ class MessagesController < ApplicationController
     end
 
   end
-
+# 過去の経験から未来を見出す
+# 元々自分がどういう人間かということを考えて伝えながら
+# 自分がどういう目的でサービスを作りたいか、（目的意識と交えながら）
+#自分の軸を見つける。
+#面白そうだったから
+#未来を感じる。自分が興味がある最先端
   def create
     @messages = @group.messages.includes(:user)
     @message = current_user.messages.new(post_params)

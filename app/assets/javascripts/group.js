@@ -30,6 +30,8 @@ $(function() {
         data: { name: form },
         // data: { name: $(this).val() }でもいい。$(this)は$('#user-search-field')の事。
         // data: { name: form }は@users = User.where('name LIKE(?)', "%#{params[:name]}%")がparamsでとってきてるのでdata: { name: form }はハッシュの形{key: value}にしないと駄目だった
+        // data  送信するデータ（「キー名: 値」のハッシュ形式）
+        // FormDataもハッシュで返している
         dataType: 'json'
     })
     .done(function(data){
